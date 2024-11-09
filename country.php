@@ -31,6 +31,13 @@ if (empty($tour_keys)) {
     $vib = "Вибачте, на даний момент турів немає.";
     echo "$vib";
 }
+echo "<h2>Інші тури</h2>";
+
+foreach ($tours as $key => $tour){
+    if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] = $stars){
+        $tour_keys[] = $key;
+    }
+}
 
 for ($i = 0; $i < count($tour_keys); $i++) {
     //print_r($tours[$tour_keys[$i]]);
