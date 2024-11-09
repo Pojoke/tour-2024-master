@@ -31,7 +31,7 @@ if (empty($tour_keys)) {
     $vib = "Вибачте, на даний момент турів немає.";
     echo "$vib";
 }
-echo "<h2>Інші тури</h2>";
+echo "<h2>Cхожі тури</h2>";
 
 foreach ($tours as $key => $tour){
     if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] = $stars){
