@@ -34,29 +34,38 @@ foreach ($tours as $key => $tour) {
 ?>
 <!-- <h3 class="text-center mt-5">Схожі тури</h3> -->
 
-<div class="list-group"></div>
-<?php
-if (empty($tour_keys)) {
-    $vib = "<h2 class='text-center mt-5'>Вибачте турів не має</h2>";
-    echo "$vib";
-}
-echo "<h2 class='text-center mt-5'>Cхожі тури</h2>";
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Схожі тури</h3>
+    
+    <div class="row">
+        <?php
+        foreach ($tours as $key => $tour) {
+            if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] == $stars) {
+                echo "<div class='col-md-4 mb-4'>"; 
+                echo "<div class='card h-100 shadow-sm'>"; 
 
-foreach ($tours as $key => $tour) {
-    if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] = $stars) {
-        $tour_keys[] = $key;
-    }
-}
+                // Заголовок карточки
+                echo "<div class='card-header bg-primary text-white'>";
+                echo "<h5 class='card-title'>Схожий тур №" . ($key + 1) . "</h5>";
+                echo "</div>";
 
-for ($i = 0; $i < count($tour_keys); $i++) {
-    //print_r($tours[$tour_keys[$i]]);
-    $n = $i + 1;
-    echo "<h3>" . $n . "</h3>";
-    foreach ($tours[$tour_keys[$i]] as $key => $value) {
-        echo "$key: $value <br>";
-    }
-}
-?>
- </div>
- </div>
+                // Тело карточки с информацией о туре
+                echo "<div class='card-body'>";
+                foreach ($tour as $infoKey => $infoValue) {
+                    echo "<p class='card-text'><strong>" .  $infoKey . ":</strong> " . $infoValue . "</p>";
+                }
+                echo "</div>"; 
+                
+                // Нижняя часть карточки
+                echo "<div class='card-footer text-muted'>";
+                echo "Інформація про тур";
+                echo "</div>";
+
+                echo "</div>"; 
+                echo "</div>"; 
+            }
+        }
+        ?>
+    </div> 
+</div>
 <?php include "footer.php";?>
