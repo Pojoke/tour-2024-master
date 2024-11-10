@@ -7,14 +7,21 @@ include "header.php";
 include_once "db.php";
 
 ?>
-<h2><?=$country?></h2>
-<h2>Ви обрали:</h2>
-<ul>
-    <li><?=$country?></li>
-    <li><?=$transport?></li>
-    <li><?=$stars?></li>
-    <li><?=$price?></li>
-</ul>
+<div class="container mt-5">
+    <!-- Заголовок с названием страны -->
+    <h2 class="text-center text-primary mb-4"><?=$country?></h2>
+
+    <!-- Заголовок "Ви обрали:" -->
+    <h3 class="text-center mb-3">Ви обрали:</h3>
+
+    <!-- Выбранные параметры в виде списка -->
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Країна:</strong> <?=$country?></li>
+        <li class="list-group-item"><strong>Транспорт:</strong> <?=$transport?></li>
+        <li class="list-group-item"><strong>Зірок:</strong> <?=$stars?></li>
+        <li class="list-group-item"><strong>Ціна:</strong> <?=$price?></li>
+    </ul>
+</div>
 <?php
 //echo "$country $transport" ;
 $tour_keys = [];
@@ -24,17 +31,19 @@ foreach ($tours as $key => $tour) {
     }
 
 }
+?>
+<!-- <h3 class="text-center mt-5">Схожі тури</h3> -->
 
-//print_r($tour_keys);
-echo "<h2>Тури</h2>";
+<div class="list-group"></div>
+<?php
 if (empty($tour_keys)) {
-    $vib = "Вибачте, на даний момент турів немає.";
+    $vib = "<h2 class='text-center mt-5'>Вибачте турів не має</h2>";
     echo "$vib";
 }
-echo "<h2>Cхожі тури</h2>";
+echo "<h2 class='text-center mt-5'>Cхожі тури</h2>";
 
-foreach ($tours as $key => $tour){
-    if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] = $stars){
+foreach ($tours as $key => $tour) {
+    if ($tour['country'] == $country || $tour['price'] <= $price || $tour['stars'] = $stars) {
         $tour_keys[] = $key;
     }
 }
@@ -47,4 +56,7 @@ for ($i = 0; $i < count($tour_keys); $i++) {
         echo "$key: $value <br>";
     }
 }
-include "footer.php";
+?>
+ </div>
+ </div>
+<?php include "footer.php";?>
