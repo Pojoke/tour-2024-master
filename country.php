@@ -8,13 +8,13 @@ include_once "db.php";
 
 ?>
 <div class="container mt-5">
-    <!-- Заголовок с названием страны -->
+    
     <h2 class="text-center text-primary mb-4"><?=$country?></h2>
 
-    <!-- Заголовок "Ви обрали:" -->
+    
     <h3 class="text-center mb-3">Ви обрали:</h3>
 
-    <!-- Выбранные параметры в виде списка -->
+    
     <ul class="list-group">
         <li class="list-group-item"><strong>Країна:</strong> <?=$country?></li>
         <li class="list-group-item"><strong>Транспорт:</strong> <?=$transport?></li>
@@ -31,7 +31,14 @@ foreach ($tours as $key => $tour) {
     }
 
 }
+
+if (empty($tour_keys)) {
+    $vib = '<h3 class="text-center mt-5">На данний момент турів не має</h3>';
+    echo "$vib";
+}
 ?>
+ 
+    
 <!-- <h3 class="text-center mt-5">Схожі тури</h3> -->
 
 <div class="container mt-5">
